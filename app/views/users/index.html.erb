@@ -1,3 +1,6 @@
+<div class="container">
+    <div class="row">
+    <div class="col-xs-3">
 <h3>User info</h3>
 <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'100x100', class: "img-circle pull-left profile-thumb" %>
 
@@ -6,10 +9,19 @@
 <h3>introduction</h3><h3 class="profile-introduction"><%= @user.introduction %></h3>
 
 <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
-</table>
+<h3>New book</h3>
+<%= form_for(@book) do |f| %>
+<%= render 'layouts/error_messages', product: f.object %>
+<h4>Title</h4>
+<%= f.text_field :title %>
+<h4>Opinion</h4>
+<%= f.text_field :body %>
+<br><%= f.submit 'Create Book' %></br>
 
+<% end %>
+</div>
+<div class="col-xs-9">
 <h3>Users</h3>
-
 <table class="table">
 <thead>
 <tr>
@@ -36,14 +48,6 @@
 <% end %>
 </tbody>
 </table>
-
-<h3>New book</h3>
-<%= form_for(@book) do |f| %>
-<%= render 'layouts/error_messages', product: f.object %>
-<h4>Title</h4>
-<%= f.text_field :title %>
-<h4>Opinion</h4>
-<%= f.text_field :body %>
-<br><%= f.submit 'Create Book' %></br>
-
-<% end %>
+</div>
+</div>
+</div>
