@@ -5,7 +5,11 @@
 <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'100x100', class: "img-circle pull-left profile-thumb" %>
 <h3>name</h3><h3 class="profile-name"><%= @user.name %></h3>
 <h3>introduction</h3><h3 class="profile-introduction"><%= @user.introduction %></h3>
+<section class="stats">
+<%= render 'users/stats'%>
+</section>
 <%= link_to "プロフィール編集", edit_user_path(@user.id) %>
+<%= render 'users/follow_form', user:@user %>
 <h3>New book</h3>
 <%= form_for(@book) do |f| %>
 <h4>Title</h4>

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!,except: [:top]
 	 def index
 		  @user = current_user
+
 	  	@users = User.all
 	  	@book = Book.new
    end
@@ -46,6 +47,19 @@ class UsersController < ApplicationController
        render :edit
        end
     end
+
+     def following
+      @user  = User.find(params[:id])
+      @users = @user.following
+      render 'show_follow'
+     end
+
+     def followers
+       @user  = User.find(params[:id])
+       @users = @user.followers
+       render 'show_follower'
+     end
+
 
     def top
     end
