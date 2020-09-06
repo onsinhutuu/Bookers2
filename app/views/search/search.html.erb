@@ -1,0 +1,28 @@
+<% if @model == "user" %>
+  <h2>User</h2>
+   <% @datas.each do |datas| %>
+   <table class="table">
+   <tr>
+   	<td>
+    <%= attachment_image_tag datas, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'50x50', class: "img-circle pull-left profile-thumb" %>
+   </td>
+   <td><%= datas.name %></td>
+   </tr>
+   </table>
+   <% end %>
+
+<% elsif @model == "book"%>
+
+    <h2>Book</h2>
+	<% @datas.each do |datas| %>
+	 <table class="table">
+     <tr>
+     <td>
+     <%= attachment_image_tag datas.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'50x50', class: "img-circle pull-left profile-thumb" %>
+     </td>
+     <td><%= datas.title %></td>
+     </tr>
+     </table>
+     <% end %>
+<% else %>@
+<% end %>
